@@ -1,0 +1,350 @@
+ .workspace {
+   max-width: 1400px;
+   margin: 0 auto;
+   padding: 16px;
+   min-height: 100vh;
+ }
+ 
+ .workspace-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 12px 0;
+   border-bottom: 1px solid var(--border);
+   margin-bottom: 16px;
+ }
+ 
+ .workspace-header h1 {
+   font-size: 20px;
+   font-weight: 600;
+   letter-spacing: -0.3px;
+ }
+ 
+ .video-uploader {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+ }
+ 
+ .upload-btn {
+   display: inline-flex;
+   align-items: center;
+   padding: 6px 14px;
+   background: var(--accent);
+   color: #fff;
+   border-radius: var(--radius);
+   cursor: pointer;
+   font-weight: 500;
+   font-size: 13px;
+ }
+ .upload-btn:active {
+   opacity: 0.8;
+ }
+ 
+ .workspace-main {
+   display: grid;
+   grid-template-columns: 1fr 360px;
+   gap: 16px;
+   align-items: start;
+ }
+ 
+ /* ── Left column ── */
+ .workspace-left {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+ }
+ 
+ .video-preview {
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 12px;
+ }
+ 
+ .preview-controls {
+   margin-bottom: 8px;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+ }
+ .preview-controls label {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   font-size: 13px;
+   color: var(--text);
+   flex: 1;
+ }
+ .preview-controls input[type="range"] {
+   flex: 1;
+ }
+ .time-label {
+   min-width: 50px;
+   text-align: right;
+   font-variant-numeric: tabular-nums;
+ }
+ 
+ .preview-frame-container {
+   position: relative;
+ }
+ .preview-frame {
+   width: 100%;
+   height: auto;
+   border-radius: 4px;
+   display: block;
+ }
+ .preview-placeholder {
+   height: 200px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--text);
+   border: 1px dashed var(--border);
+   border-radius: 4px;
+ }
+ .video-info-badge {
+   margin-top: 6px;
+   font-size: 12px;
+   color: var(--text);
+ }
+ 
+ /* ── ROI Selector ── */
+ .roi-selector {
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 12px;
+ }
+ .roi-label {
+   font-size: 12px;
+   color: var(--text);
+   margin-bottom: 8px;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+   font-weight: 500;
+ }
+ .roi-container {
+   cursor: crosshair;
+   border-radius: 4px;
+   overflow: hidden;
+ }
+ .roi-box {
+   z-index: 10;
+   border-radius: 2px;
+ }
+ .roi-coords {
+   margin-top: 6px;
+   font-size: 12px;
+   color: var(--accent);
+   font-family: 'SF Mono', 'Cascadia Code', monospace;
+ }
+ 
+ /* ── Right column ── */
+ .workspace-right {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+ }
+ 
+ .parameter-panel {
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 14px;
+ }
+ 
+ .parameter-panel h3 {
+   font-size: 13px;
+   font-weight: 600;
+   margin-bottom: 12px;
+   color: var(--text);
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+ }
+ 
+ .param-group {
+   margin-bottom: 10px;
+ }
+ .param-group label {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   font-size: 13px;
+   color: var(--text);
+   margin-bottom: 3px;
+ }
+ .param-group.checklist label {
+   cursor: pointer;
+ }
+ .param-group input[type="number"],
+ .param-group select {
+   width: 100%;
+   padding: 5px 8px;
+   background: var(--bg);
+   border: 1px solid var(--border);
+   border-radius: 4px;
+   color: var(--text);
+   outline: none;
+ }
+ .param-group input[type="number"]:focus,
+ .param-group select:focus {
+   border-color: var(--accent);
+ }
+ .param-group input[type="checkbox"] {
+   accent-color: var(--accent);
+ }
+ 
+ .action-bar {
+   display: flex;
+   gap: 8px;
+ }
+ 
+ .btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   padding: 7px 16px;
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   color: var(--text);
+   cursor: pointer;
+   font-size: 13px;
+   font-weight: 500;
+   text-decoration: none;
+   transition: background 0.15s;
+ }
+ .btn:hover {
+   background: #21262d;
+ }
+ .btn:disabled,
+ .btn.disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+ }
+ .btn-primary {
+   background: #238636;
+   border-color: rgba(240, 246, 252, 0.1);
+   color: #fff;
+ }
+ .btn-primary:hover {
+   background: #2ea043;
+ }
+ .btn-primary:disabled {
+   background: #238636;
+   opacity: 0.6;
+ }
+ 
+ /* ── Progress ── */
+ .progress-panel {
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 14px;
+ }
+ .progress-panel.error {
+   border-color: var(--accent-red);
+ }
+ .progress-panel.done {
+   border-color: var(--accent-green);
+ }
+ 
+ .progress-header {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 8px;
+ }
+ .progress-status {
+   font-weight: 600;
+   font-size: 13px;
+ }
+ .progress-pct {
+   font-family: 'SF Mono', 'Cascadia Code', monospace;
+   font-size: 13px;
+   color: var(--accent);
+ }
+ 
+ .progress-bar-bg {
+   height: 6px;
+   background: var(--bg);
+   border-radius: 3px;
+   overflow: hidden;
+   margin-bottom: 8px;
+ }
+ .progress-bar-fill {
+   height: 100%;
+   background: var(--accent-green);
+   border-radius: 3px;
+   transition: width 0.3s ease;
+ }
+ 
+ .progress-detail {
+   font-size: 12px;
+   color: var(--text);
+   margin-bottom: 8px;
+ }
+ 
+ .progress-log {
+   max-height: 120px;
+   overflow-y: auto;
+   font-size: 12px;
+   font-family: 'SF Mono', 'Cascadia Code', monospace;
+   background: var(--bg);
+   border-radius: 4px;
+   padding: 6px 8px;
+ }
+ .log-line {
+   color: var(--text);
+   line-height: 1.6;
+ }
+ 
+ .progress-idle {
+   color: var(--text);
+   font-size: 13px;
+ }
+ 
+ /* ── Results ── */
+ .result-preview {
+   background: var(--surface);
+   border: 1px solid var(--border);
+   border-radius: var(--radius);
+   padding: 14px;
+ }
+ 
+ .result-preview h3 {
+   font-size: 13px;
+   font-weight: 600;
+   margin-bottom: 12px;
+   color: var(--text);
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+ }
+ 
+ .result-actions {
+   display: flex;
+   gap: 8px;
+   margin-bottom: 10px;
+ }
+ 
+ .stitch-preview-container {
+   overflow: auto;
+   border: 1px solid var(--border);
+   border-radius: 4px;
+   background: #fff;
+ }
+ .stitch-preview {
+   display: block;
+ }
+ 
+ .result-placeholder {
+   color: var(--text);
+   font-size: 13px;
+ }
+ 
+ /* ── Responsive ── */
+ @media (max-width: 900px) {
+   .workspace-main {
+     grid-template-columns: 1fr;
+   }
+ }

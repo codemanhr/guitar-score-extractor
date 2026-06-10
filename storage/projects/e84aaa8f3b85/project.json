@@ -1,0 +1,33 @@
+{
+  "source_video": "/Users/rui/Desktop/code/codex/guitar score/storage/projects/e84aaa8f3b85/source/\u3010\u9644\u8c31\u3011\u6700\u539f\u7248\u7684Guitar Boogie\u5728\u8fd9\u91cc\uff01\u8d76\u5feb\u62ff\u4e0b\uff01Guitar Boogie - Arthur Smith - Guitar Tab.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 213.866,
+    "frame_count": 6415,
+    "codec": "h264"
+  },
+  "roi": {
+    "x": -2,
+    "y": 744,
+    "width": 1920,
+    "height": 317
+  },
+  "processing": {
+    "sample_fps": 3.0,
+    "start_time": 0.0,
+    "end_time": null,
+    "max_frames": null,
+    "scroll_direction": "left",
+    "invert": false,
+    "threshold": "auto"
+  },
+  "pdf": {
+    "page_size": "A4",
+    "orientation": "portrait",
+    "margin_mm": 10.0,
+    "scale": 1.0
+  },
+  "updated_at": "2026-06-10T11:08:07Z"
+}

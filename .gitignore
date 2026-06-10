@@ -1,0 +1,30 @@
+ # Python
+ __pycache__/
+ *.py[cod]
+ .env
+ venv/
+ .venv/
+ 
+ # Node
+ node_modules/
+ dist/
+ 
+ # Storage
+ storage/projects/
+ 
+ # IDE
+ .vscode/
+ .idea/
+ *.swp
+ *.swo
+ 
+ # OS
+ .DS_Store
+ Thumbs.db
+ 
+ # Temp
+ *.tmp
+ *.log
+
+# Codex
+.codex/

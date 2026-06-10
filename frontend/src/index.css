@@ -1,0 +1,36 @@
+ :root {
+   --bg: #0d1117;
+   --surface: #161b22;
+   --border: #30363d;
+   --text: #e6edf3;
+   --text-muted: #8b949e;
+   --accent: #58a6ff;
+   --accent-green: #3fb950;
+   --accent-red: #f85149;
+   --radius: 6px;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+   font-size: 14px;
+   line-height: 1.5;
+   color: var(--text);
+   background: var(--bg);
+ }
+ 
+ * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ body {
+   min-height: 100vh;
+ }
+ 
+ #root {
+   min-height: 100vh;
+ }
+ 
+ input, select, button {
+   font-family: inherit;
+   font-size: inherit;
+   color: inherit;
+ }
