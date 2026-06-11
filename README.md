@@ -78,6 +78,22 @@ cd backend && source .venv/bin/activate && python3 -m uvicorn app.main:app --hos
 
 打开浏览器访问 `http://localhost:5173`。
 
+
+**方式三：一键脚本**
+
+项目根目录提供了 `start.sh` / `stop.sh` 脚本，一条命令启动前后端：
+
+```bash
+cd <repo-folder>
+
+# 启动（后端 + 前端同时运行）
+bash start.sh
+
+# 停止
+bash stop.sh
+```
+
+启动后访问 **http://localhost:5173** 即可使用。
 ### 一键快速运行（复制粘贴）
 
 下面的命令在 macOS / Linux 上可用于快速在两个终端启动项目：
