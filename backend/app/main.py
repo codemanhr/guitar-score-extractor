@@ -23,6 +23,7 @@ def _check_dependencies():
         print("   安装方法:", file=sys.stderr)
         print("   macOS:  brew install ffmpeg", file=sys.stderr)
         print("   Ubuntu: sudo apt install ffmpeg", file=sys.stderr)
+        print("   Windows: winget install --id=Gyan.FFmpeg -e", file=sys.stderr)
         sys.exit(1)
     else:
         print("✅ 系统依赖检查通过 (ffmpeg / ffprobe)")
