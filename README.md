@@ -33,7 +33,7 @@
 ```bash
 # 1. 克隆仓库
 git clone <your-repo-url>
-cd guitar-score-extractor
+cd <repo-folder>  # 替换为你克隆后的目录名
 
 # 2. 安装后端
 cd backend
@@ -43,7 +43,14 @@ pip install -r requirements.txt
 
 # 3. 安装前端
 cd ../frontend
-npm install
+# 建议在 CI/可重复环境中使用 `npm ci`
+npm ci
+
+# macOS 安装 ffmpeg（如需）
+# brew install ffmpeg
+
+# Ubuntu / Debian:
+# sudo apt update && sudo apt install -y ffmpeg
 ```
 
 ### 运行
@@ -70,6 +77,26 @@ cd backend && source .venv/bin/activate && python3 -m uvicorn app.main:app --hos
 ```
 
 打开浏览器访问 `http://localhost:5173`。
+
+### 一键快速运行（复制粘贴）
+
+下面的命令在 macOS / Linux 上可用于快速在两个终端启动项目：
+
+```bash
+# 终端 A（后端）
+cd <repo-folder>/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 -m app.main
+
+# 终端 B（前端）
+cd <repo-folder>/frontend
+npm ci
+npm run dev
+```
+
+将 `<repo-folder>` 替换为你实际的仓库目录名（`git clone` 后生成的目录）。
 
 ## 使用指南
 
