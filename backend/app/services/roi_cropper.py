@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Callable, Optional
+
 import cv2
 import numpy as np
 from pathlib import Path
@@ -18,7 +20,10 @@ def crop_roi(frame_path: str | Path, roi: ROI) -> np.ndarray:
     x2 = min(w, roi.x + roi.width)
     y2 = min(h, roi.y + roi.height)
     if x2 <= x1 or y2 <= y1:
-        raise ValueError(f"ROI {roi} is outside frame dimensions ({w}x{h})")
+        raise ValueError(
+            f"ROI ({roi.x},{roi.y},{roi.width}x{roi.height}) "
+            f"outside frame ({w}x{h})"
+        )
     return img[y1:y2, x1:x2]
 
 
@@ -27,14 +32,20 @@ def batch_crop(
     roi: ROI,
     output_dir: Path,
     save_debug: bool = False,
+    log_func: Optional[Callable[[str], None]] = None,
 ) -> list[Path]:
-    """Crop all frames to ROI and save to output_dir. Returns list of cropped paths."""
+    """Crop all frames to ROI and save to output_dir. Returns list of cropped paths.
+
+    If `log_func` is provided, individual frame errors are logged through it
+    instead of being silently swallowed.
+    """
     output_dir.mkdir(parents=True, exist_ok=True)
     cropped_paths = []
     debug_dir = output_dir.parent / "debug" if save_debug else None
     if debug_dir:
         debug_dir.mkdir(parents=True, exist_ok=True)
 
+    first_error = None
     for i, fpath in enumerate(frame_paths):
         try:
             cropped = crop_roi(fpath, roi)
@@ -42,7 +53,10 @@ def batch_crop(
             cv2.imwrite(str(out_path), cropped)
             cropped_paths.append(out_path)
         except Exception as e:
-            print(f"  [cropper] Skipping {fpath.name}: {e}")
+            if first_error is None:
+                first_error = str(e)
+            if log_func:
+                log_func(f"  [skip] {fpath.name}: {e}")
             continue
 
     return cropped_paths

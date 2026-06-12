@@ -240,13 +240,13 @@ def _run_pipeline(project_id: str, config: ProjectConfig) -> None:
     task.status = TaskStatus.cropping
     task.current_stage = "Cropping ROI"
     crop_dir = storage.crops_dir(project_id)
-    crop_paths = batch_crop(frame_paths, config.roi, crop_dir, save_debug=True)
+    crop_paths = batch_crop(frame_paths, config.roi, crop_dir, save_debug=True, log_func=lambda msg: _log(project_id, msg))
     task.current_frame = len(crop_paths)
     task.progress_pct = 20.0
     task.log.append(f"Cropped {len(crop_paths)} frames")
 
     if len(crop_paths) == 0:
-        raise ValueError("No crops generated")
+        raise ValueError(f"No crops generated — check task log for per-frame errors")
 
     # Deduplicate near-identical frames
     task.current_stage = "去重"
