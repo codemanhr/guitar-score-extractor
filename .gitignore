@@ -30,3 +30,6 @@ Thumbs.db
 
 # Codex
 .codex/
+
+# Vite temp cache
+frontend/node_modules/.vite/

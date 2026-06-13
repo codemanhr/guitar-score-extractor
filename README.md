@@ -144,7 +144,7 @@ guitar-score-extractor/
 │   │   ├── services/
 │   │   │   ├── frame_extractor.py   # ffmpeg 帧提取
 │   │   │   ├── roi_cropper.py       # ROI 裁剪
-│   │   │   ├── image_preprocessor.py # 预处理 + 去重
+│   │   │   ├── image_preprocessor.py # 去重（Otsu+膨胀+内容区域对比）
 │   │   │   ├── pdf_exporter.py      # PDF 导出(帧排布 + img2pdf)
 │   │   │   └── video_service.py     # 视频元信息读取
 │   │   └── storage/manager.py       # 文件存储管理
